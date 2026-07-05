@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1e40af">
+  <title>DJLabs — Embedded Systems Engineering</title>
+  <meta name="description" content="DJLabs delivers embedded software engineering services — RTOS, bare-metal firmware, device drivers, BSP, and embedded architecture for medical, industrial, automotive, and IoT.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== CSS Reset & Variables ===== */
+    :root {
+      --color-bg: #ffffff;
+      --color-surface: #f8fafc;
+      --color-surface-alt: #f1f5f9;
+      --color-dark: #0a1628;
+      --color-primary: #2563eb;
+      --color-primary-hover: #1d4ed8;
+      --color-primary-light: #eff6ff;
+      --color-secondary: #14b8a6;
+      --color-secondary-hover: #0f766e;
+      --color-accent: #f59e0b;
+      --color-text: #0f172a;
+      --color-text-secondary: #475569;
+      --color-text-muted: #94a3b8;
+      --color-border: #e2e8f0;
+      --color-border-strong: #cbd5e1;
+      --color-code-bg: #0a0e17;
+      --color-code-text: #e5e7eb;
+      --color-success: #059669;
+      --color-warning: #d97706;
+      --color-error: #dc2626;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+      --font-size-xs: 0.75rem;
+      --font-size-sm: 0.875rem;
+      --font-size-base: 1rem;
+      --font-size-lg: 1.125rem;
+      --font-size-xl: 1.25rem;
+      --font-size-2xl: 1.5rem;
+      --font-size-3xl: 1.875rem;
+      --font-size-4xl: 2.25rem;
+      --font-size-5xl: 3rem;
+      --font-size-6xl: 3.75rem;
+      --spacing-2xs: 0.125rem;
+      --spacing-xs: 0.25rem;
+      --spacing-sm: 0.5rem;
+      --spacing-md: 1rem;
+      --spacing-lg: 1.5rem;
+      --spacing-xl: 2rem;
+      --spacing-2xl: 3rem;
+      --spacing-3xl: 4rem;
+      --spacing-4xl: 6rem;
+      --spacing-section: 5rem;
+      --max-width: 1200px;
+      --article-width: 780px;
+      --header-height: 64px;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-lg: 0 4px 6px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.04);
+      --transition: 200ms ease-out;
+    }
+
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-size:16px;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;scroll-behavior:smooth}
+    body{font-family:var(--font-sans);font-size:var(--font-size-base);line-height:1.7;color:var(--color-text);background:var(--color-bg);overflow-x:hidden}
+    body.nav-open{overflow:hidden}
+
+    h1,h2,h3,h4,h5,h6{font-weight:700;line-height:1.2;color:var(--color-text)}
+    h1{font-size:var(--font-size-4xl)}
+    h2{font-size:var(--font-size-3xl)}
+    h3{font-size:var(--font-size-2xl)}
+    h4{font-size:var(--font-size-xl)}
+    @media(max-width:768px){h1{font-size:var(--font-size-3xl)}h2{font-size:var(--font-size-2xl)}h3{font-size:var(--font-size-xl)}}
+
+    p{margin-bottom:var(--spacing-md)}
+    a{color:var(--color-primary);text-decoration:none;transition:color var(--transition)}
+    a:hover{color:var(--color-primary-hover);text-decoration:underline}
+    img{max-width:100%;height:auto}
+
+    code{font-family:var(--font-mono);font-size:.9em;background:var(--color-surface);padding:.15em .4em;border-radius:var(--radius-sm);color:var(--color-primary)}
+    pre{background:var(--color-code-bg);color:var(--color-code-text);padding:var(--spacing-lg);border-radius:var(--radius-md);overflow-x:auto;margin-bottom:var(--spacing-lg);font-size:var(--font-size-sm);line-height:1.6;border:1px solid #1a2332}
+    @media(max-width:480px){pre{padding:var(--spacing-md);font-size:var(--font-size-xs);border-radius:var(--radius-sm)}}
+    pre code{background:none;color:inherit;padding:0;font-size:inherit;white-space:pre}
+
+    ::selection{background:var(--color-primary-light);color:var(--color-primary)}
+
+    /* ===== Layout ===== */
+    .container{max-width:var(--max-width);margin:0 auto;padding:0 var(--spacing-lg)}
+    @media(max-width:480px){.container{padding:0 var(--spacing-md)}}
+
+    .section{padding:var(--spacing-section) 0;border-bottom:1px solid var(--color-border-strong)}
+    .section:last-of-type{border-bottom:none}
+    @media(max-width:768px){.section{padding:var(--spacing-3xl) 0}}
+    .section--alt{background:var(--color-surface)}
+    .section--compact{padding:var(--spacing-3xl) 0;border-bottom:1px solid var(--color-border-strong)}
+    @media(max-width:768px){.section--compact{padding:var(--spacing-2xl) 0}}
+
+    .section__header{text-align:center;max-width:720px;margin:0 auto var(--spacing-3xl)}
+    @media(max-width:768px){.section__header{margin-bottom:var(--spacing-xl)}}
+    .section__header h2{margin-bottom:var(--spacing-sm)}
+    .section__header p{color:var(--color-text-secondary);font-size:var(--font-size-lg)}
+
+    /* ===== Header ===== */
+    .site-header{height:var(--header-height);border-bottom:1px solid var(--color-border-strong);background:var(--color-bg);position:sticky;top:0;z-index:100}
+    .site-header__inner{display:flex;align-items:center;justify-content:space-between;height:100%}
+    .site-header__logo{font-size:var(--font-size-xl);font-weight:700;color:var(--color-text);text-decoration:none}
+    .site-header__logo:hover{text-decoration:none}
+    .site-header__logo-accent{color:var(--color-primary)}
+
+    .nav{display:flex;align-items:center;gap:var(--spacing-xl)}
+    @media(max-width:768px){.nav{display:none}}
+    .nav__link{font-family:var(--font-mono);font-size:var(--font-size-xs);font-weight:500;color:var(--color-text-secondary);text-decoration:none;letter-spacing:.04em;transition:color var(--transition)}
+    .nav__link:hover{color:var(--color-primary);text-decoration:none}
+
+    .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:var(--spacing-sm);color:var(--color-text)}
+    @media(max-width:768px){.nav-toggle{display:block}}
+
+    .mobile-nav{display:none;position:fixed;top:var(--header-height);left:0;right:0;bottom:0;background:var(--color-bg);padding:var(--spacing-xl);z-index:99;overflow-y:auto}
+    .mobile-nav.is-open{display:block}
+    .mobile-nav a{display:block;padding:var(--spacing-md) 0;font-family:var(--font-mono);font-size:var(--font-size-sm);font-weight:500;color:var(--color-text);letter-spacing:.04em;border-bottom:1px solid var(--color-border);text-decoration:none}
+    .mobile-nav a:hover{color:var(--color-primary)}
+
+    /* ===== Hero ===== */
+    .hero{display:grid;grid-template-columns:1fr 1fr;gap:var(--spacing-3xl);align-items:center;padding:var(--spacing-4xl) 0;min-height:calc(100vh - var(--header-height));position:relative}
+    .hero::after{content:"";position:absolute;left:50%;top:8%;bottom:8%;width:1px;background:linear-gradient(to bottom,transparent 0%,rgba(37,99,235,.08) 10%,rgba(37,99,235,.3) 35%,rgba(37,99,235,.5) 50%,rgba(37,99,235,.3) 65%,rgba(37,99,235,.08) 90%,transparent 100%);box-shadow:0 0 12px rgba(37,99,235,.12)}
+    @media(max-width:768px){.hero{grid-template-columns:1fr;padding:var(--spacing-xl) 0;min-height:auto;gap:var(--spacing-lg)}.hero::after{display:none}}
+    .hero__content{min-width:0}
+    .hero__content h1{font-size:var(--font-size-5xl);margin-bottom:var(--spacing-md);line-height:1.1}
+    @media(max-width:1024px){.hero__content h1{font-size:var(--font-size-4xl)}}
+    @media(max-width:768px){.hero__content h1{font-size:var(--font-size-3xl)}}
+    .hero__content p{font-size:var(--font-size-lg);color:var(--color-text-secondary);margin-bottom:var(--spacing-xl)}
+    .hero__label{display:inline-block;font-family:var(--font-mono);font-size:var(--font-size-xs);font-weight:500;color:var(--color-primary);letter-spacing:.06em;text-transform:uppercase;margin-bottom:var(--spacing-md)}
+    .hero__visual{min-width:0;display:flex;align-items:center;justify-content:center}
+
+    /* ===== Buttons ===== */
+    .btn{display:inline-flex;align-items:center;gap:var(--spacing-sm);padding:.75rem 1.5rem;font-family:var(--font-sans);font-size:var(--font-size-base);font-weight:600;border:2px solid transparent;border-radius:var(--radius-md);cursor:pointer;transition:all var(--transition);text-decoration:none}
+    .btn:hover{text-decoration:none}
+    .btn--primary{background:var(--color-primary);color:#fff}
+    .btn--primary:hover{background:var(--color-primary-hover);color:#fff;transform:translateY(-1px);box-shadow:var(--shadow-md)}
+    .btn--secondary{background:transparent;color:var(--color-primary);border-color:var(--color-primary)}
+    .btn--secondary:hover{background:var(--color-primary-light);transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+    .btn--large{padding:1rem 2rem;font-size:var(--font-size-lg)}
+    .btn-group{display:flex;gap:var(--spacing-md);flex-wrap:wrap}
+    @media(max-width:480px){.btn-group{flex-direction:column}.btn-group .btn{width:100%;justify-content:center}}
+
+    /* ===== Cards ===== */
+    .card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--spacing-2xl)}
+    @media(max-width:1024px){.card-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.card-grid{grid-template-columns:1fr}}
+    .card{background:var(--color-bg);border:1px solid var(--color-border);border-left:3px solid rgba(37,99,235,.15);border-radius:var(--radius-lg);padding:var(--spacing-xl);transition:border-left-color var(--transition),box-shadow var(--transition)}
+    .card:hover{border-left-color:var(--color-primary);box-shadow:var(--shadow-md)}
+    .card__title{font-size:var(--font-size-lg);font-weight:600;margin-bottom:var(--spacing-sm);color:var(--color-text)}
+    .card__text{color:var(--color-text-secondary);font-size:var(--font-size-sm);line-height:1.6}
+
+    /* ===== Tech Grid ===== */
+    .tech-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--spacing-sm)}
+    @media(max-width:768px){.tech-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:400px){.tech-grid{grid-template-columns:1fr}}
+    .tech-item{padding:var(--spacing-sm) var(--spacing-md);background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius-sm);font-family:var(--font-mono);font-size:var(--font-size-xs);color:var(--color-text-secondary);text-align:center;transition:border-color var(--transition)}
+    .tech-item:hover{border-color:var(--color-primary)}
+
+    /* ===== CTA Section ===== */
+    .cta-section{text-align:center;padding:var(--spacing-4xl) var(--spacing-2xl);background:var(--color-primary);color:#fff;border-radius:var(--radius-lg);box-shadow:inset 0 0 0 1px hsla(0,0%,100%,.08);position:relative;overflow:hidden}
+    .cta-section::before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(255,255,255,0.015) 40px,rgba(255,255,255,0.015) 41px),repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(255,255,255,0.015) 40px,rgba(255,255,255,0.015) 41px);pointer-events:none;border-radius:var(--radius-lg)}
+    @media(max-width:768px){.cta-section{padding:var(--spacing-2xl) var(--spacing-lg)}}
+    .cta-section h2{color:#fff;margin-bottom:var(--spacing-sm);position:relative}
+    .cta-section p{color:hsla(0,0%,100%,.85);font-size:var(--font-size-lg);margin-bottom:var(--spacing-xl);position:relative}
+    .cta-section .btn--primary{background:#fff;color:var(--color-primary);position:relative}
+    .cta-section .btn--primary:hover{background:var(--color-surface)}
+
+    /* ===== Terminal (hero visual) ===== */
+    .terminal{background:#1e1e1e;border-radius:var(--radius-md);overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.3);width:100%;font-family:var(--font-mono)}
+    .terminal__titlebar{display:flex;align-items:center;padding:10px 14px;background:#2d2d2d;gap:8px;user-select:none}
+    .terminal__dots{display:flex;gap:6px;flex-shrink:0}
+    .terminal__dot{width:12px;height:12px;border-radius:50%}
+    .terminal__dot--close{background:#ff5f57}
+    .terminal__dot--min{background:#febc2e}
+    .terminal__dot--max{background:#28c840}
+    .terminal__title{flex:1;text-align:center;font-size:11px;color:#999;margin-right:52px}
+    .terminal__body{padding:16px 20px;font-size:.8rem;line-height:1.8;color:#a0a8b7;overflow:hidden}
+    @media(max-width:768px){.terminal__body{font-size:.6rem;padding:12px 14px;line-height:1.6}}
+    .terminal__line{white-space:pre}
+    .terminal__line--gap{margin-bottom:.12rem}
+    .terminal__line--djlabs{color:#14b8a6;font-weight:700;background:rgba(20,184,166,.08);border-left:3px solid #14b8a6;padding-left:.8em;margin-left:-0.75em}
+    .terminal__line--djlabs strong{color:#2dd4bf}
+    .terminal__cursor{display:inline-block;width:8px;height:1.1em;background:rgba(97,175,239,.7);vertical-align:text-bottom;margin-left:2px;animation:cursor-blink 1s step-end infinite}
+    @keyframes cursor-blink{0%,100%{opacity:1}50%{opacity:0}}
+
+    /* ===== Footer ===== */
+    .site-footer{background:var(--color-dark);color:var(--color-text-muted);padding:var(--spacing-3xl) 0 var(--spacing-xl);font-size:var(--font-size-sm);border-top:2px solid var(--color-secondary)}
+    .site-footer a{color:#9ca3af}
+    .site-footer a:hover{color:#fff;text-decoration:none}
+    .site-footer__grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:var(--spacing-2xl);margin-bottom:var(--spacing-2xl)}
+    @media(max-width:768px){.site-footer__grid{grid-template-columns:1fr 1fr;gap:var(--spacing-xl)}}
+    @media(max-width:480px){.site-footer__grid{grid-template-columns:1fr;gap:var(--spacing-lg)}}
+    .site-footer__brand{color:#fff;font-size:var(--font-size-lg);font-weight:700;margin-bottom:var(--spacing-sm)}
+    .site-footer__brand-accent{color:var(--color-secondary)}
+    .site-footer__heading{color:#fff;margin-bottom:var(--spacing-sm);font-family:var(--font-mono);font-size:var(--font-size-xs);font-weight:500;text-transform:uppercase;letter-spacing:.08em}
+    .site-footer ul{list-style:none;padding:0;margin:0}
+    .site-footer ul li{margin-bottom:.25rem}
+    .site-footer__bottom{border-top:1px solid hsla(0,0%,100%,.08);padding-top:var(--spacing-lg);display:flex;justify-content:space-between}
+    @media(max-width:640px){.site-footer__bottom{flex-direction:column;gap:var(--spacing-sm)}}
+
+    /* ===== Utilities ===== */
+    .text-center{text-align:center}
+    .mt-xl{margin-top:var(--spacing-xl)}
+    .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header" role="banner">
+  <div class="container site-header__inner">
+    <a href="#" class="site-header__logo">
+      <span class="site-header__logo-accent">DJ</span>Labs
+    </a>
+
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#services" class="nav__link">Services</a>
+      <a href="#industries" class="nav__link">Industries</a>
+      <a href="#expertise" class="nav__link">Expertise</a>
+      <a href="#contact" class="btn btn--primary">Talk to an Engineer</a>
+    </nav>
+
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-nav">
+  <a href="#services">Services</a>
+  <a href="#industries">Industries</a>
+  <a href="#expertise">Expertise</a>
+  <a href="#contact" class="btn btn--primary" style="margin-top:1rem;display:inline-flex;">Talk to an Engineer</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero container">
+  <div class="hero__content">
+    <span class="hero__label">Embedded Systems Engineering</span>
+    <h1>We design and build the software that powers your devices</h1>
+    <p>Deep expertise in bare-metal and RTOS based firmware.<br>The engineer you meet is the one who writes your code.<br><br>Delivery from architecture to production, with trusted specialists brought in when projects need additional scale.</p>
+    <div class="btn-group">
+      <a href="#contact" class="btn btn--primary btn--large">Talk to an engineer</a>
+    </div>
+  </div>
+  <div class="hero__visual">
+    <div class="terminal" aria-label="Zephyr RTOS fatal error output">
+      <div class="terminal__titlebar">
+        <div class="terminal__dots">
+          <span class="terminal__dot terminal__dot--close"></span>
+          <span class="terminal__dot terminal__dot--min"></span>
+          <span class="terminal__dot terminal__dot--max"></span>
+        </div>
+        <span class="terminal__title">/dev/ttyACM0/</span>
+      </div>
+      <div class="terminal__body">
+        <div class="terminal__line">ASSERTION FAIL [foo == 0xF0CACC1A] @ ZEPHYR_BASE/app/src/main.c:367</div>
+        <div class="terminal__line">        Something went really wrong!</div>
+        <div class="terminal__line">r0/a1:  0x00000004  r1/a2:  0x0000016f  r2/a3:  0x00000000</div>
+        <div class="terminal__line">r3/a4:  0x00000000 r12/ip:  0x00000000 r14/lr:  0x00000a6d</div>
+        <div class="terminal__line"> xpsr:  0x61000000</div>
+        <div class="terminal__line">Faulting instruction address (r15/pc): 0x00009fe4</div>
+        <div class="terminal__line">&gt;&gt;&gt; ZEPHYR FATAL ERROR 4: Kernel panic</div>
+        <div class="terminal__line">Current thread: 0x20000414 (main)</div>
+        <div class="terminal__line">Halting system</div>
+        <div class="terminal__line terminal__line--gap"></div>
+        <div class="terminal__line terminal__line--djlabs"><strong>DJLABS:</strong> Firmware issues? We can help!<span class="terminal__cursor"></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY DJLABS ===== -->
+<section class="section section--compact">
+  <div class="container">
+    <div class="section__header">
+      <h2>Why engineering teams choose DJLabs</h2>
+      <p>We're not generalists. Embedded systems is all we do — and we do it at every layer of the stack.</p>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <h3 class="card__title">Deep Embedded Expertise</h3>
+        <p class="card__text">bare-metal, FreeRTOS, ThreadX, NuttX, Zephyr RTOS — we work at the level your product needs, from bootloader to application.</p>
+      </div>
+      <div class="card">
+        <h3 class="card__title">Engineer-to-Engineer</h3>
+        <p class="card__text">You talk directly to the senior engineer writing your firmware — not account managers, not project coordinators. Clear technical communication from the person doing the work.</p>
+      </div>
+      <div class="card">
+        <h3 class="card__title">Architecture to Delivery</h3>
+        <p class="card__text">From system architecture to production firmware. We own the full embedded software lifecycle and deliver code that ships.</p>
+      </div>
+      <div class="card">
+        <h3 class="card__title">Regulated Industry Experience</h3>
+        <p class="card__text">We build software that passes audits and ships to market.</p>
+      </div>
+      <div class="card">
+        <h3 class="card__title">Honest Communication</h3>
+        <p class="card__text">Direct access to the engineer doing the work. Clear technical updates, honest timelines, and straight answers.</p>
+      </div>
+      <div class="card">
+        <h3 class="card__title">Shipping Code, Not Slides</h3>
+        <p class="card__text">We prioritize working firmware over polished presentations. Pragmatic decisions that balance technical quality with the only metric that counts — does it ship.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CORE SERVICES ===== -->
+<section class="section section--alt section--compact" id="services">
+  <div class="container">
+    <div class="section__header">
+      <h2>Core Services</h2>
+      <p>Full-stack embedded software engineering, from silicon to application layer.</p>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <h3 class="card__title">Embedded Software Development</h3>
+        <p class="card__text">Full-stack embedded software from architecture to production.</p>
+      </div>
+      <div class="card">
+        <h3 class="card__title">RTOS Development</h3>
+        <p class="card__text">Zephyr, FreeRTOS, and NuttX development for real-time systems.</p>
+      </div>
+      <div class="card">
+        <h3 class="card__title">BSP &amp; Board Bring-Up</h3>
+        <p class="card__text">Board support packages and fast hardware bring-up for custom boards.</p>
+      </div>
+      <div class="card">
+        <h3 class="card__title">Device Driver Development</h3>
+        <p class="card__text">RTOS and bare-metal drivers for custom peripherals and sensors.</p>
+      </div>
+      <div class="card">
+        <h3 class="card__title">Embedded Architecture Consulting</h3>
+        <p class="card__text">System architecture, technology selection, and design review.</p>
+      </div>
+      <div class="card">
+        <h3 class="card__title">Embedded Security</h3>
+        <p class="card__text">Secure boot, firmware signing, and hardware security module integration.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INDUSTRIES ===== -->
+<section class="section section--compact" id="industries">
+  <div class="container">
+    <div class="section__header">
+      <h2>Industries We Serve</h2>
+      <p>Deep experience across regulated and performance-critical sectors.</p>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <h3 class="card__title">Medical Devices</h3>
+        <p class="card__text">Embedded software for medical devices, diagnostics, and digital health — IEC 62304 compliant.</p>
+      </div>
+      <div class="card">
+        <h3 class="card__title">Industrial Automation</h3>
+        <p class="card__text">Embedded control systems for factory automation, process control, and industrial IoT.</p>
+      </div>
+      <div class="card">
+        <h3 class="card__title">Automotive</h3>
+        <p class="card__text">Embedded software for automotive ECUs, ADAS, and connected vehicle systems — ISO 26262 experience.</p>
+      </div>
+      <div class="card">
+        <h3 class="card__title">Internet of Things</h3>
+        <p class="card__text">Connected embedded systems for IoT products, edge computing, and wireless sensor networks.</p>
+      </div>
+      <div class="card">
+        <h3 class="card__title">Robotics</h3>
+        <p class="card__text">Embedded control software for robots, autonomous systems, and motion control.</p>
+      </div>
+      <div class="card">
+        <h3 class="card__title">Consumer Electronics</h3>
+        <p class="card__text">Embedded software for smart home devices, wearables, and connected products.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW WE ENGAGE ===== -->
+<section class="section section--alt section--compact">
+  <div class="container">
+    <div class="section__header">
+      <h2>How We Engage</h2>
+      <p>Flexible models that adapt to where you are in your product journey.</p>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <h3 class="card__title">Project-Based</h3>
+        <p class="card__text">Fixed-scope projects with clear deliverables and milestones, led by a senior engineer who owns the outcome — with trusted network specialists brought in when needed.</p>
+      </div>
+      <div class="card">
+        <h3 class="card__title">Embedded Engineering Partner</h3>
+        <p class="card__text">A senior embedded engineer integrated with your team on an ongoing basis — the same person, every sprint. Trusted specialists brought in when your project needs additional scale.</p>
+      </div>
+      <div class="card">
+        <h3 class="card__title">Advisory</h3>
+        <p class="card__text">Architecture reviews, technology selection, and technical due diligence from a senior engineer who has made these decisions before and lived with the consequences.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TECHNICAL EXPERTISE ===== -->
+<section class="section section--compact" id="expertise">
+  <div class="container">
+    <div class="section__header">
+      <h2>Technical Expertise</h2>
+      <p>Technologies, platforms, and standards we work with daily.</p>
+    </div>
+    <div class="tech-grid">
+      <span class="tech-item">Zephyr RTOS</span>
+      <span class="tech-item">FreeRTOS</span>
+      <span class="tech-item">NuttX</span>
+      <span class="tech-item">ARM Cortex-M</span>
+      <span class="tech-item">ARM Cortex-A</span>
+      <span class="tech-item">ARM Cortex-R</span>
+      <span class="tech-item">RISC-V</span>
+      <span class="tech-item">U-Boot</span>
+      <span class="tech-item">Device Tree</span>
+      <span class="tech-item">SPI / I²C</span>
+      <span class="tech-item">CAN / CAN FD</span>
+      <span class="tech-item">USB Stack</span>
+      <span class="tech-item">Bluetooth LE</span>
+      <span class="tech-item">WiFi / 802.11</span>
+      <span class="tech-item">Ethernet / TCP/IP</span>
+      <span class="tech-item">Secure Boot</span>
+      <span class="tech-item">Trusted Firmware-A</span>
+      <span class="tech-item">IEC 62304</span>
+      <span class="tech-item">ISO 26262</span>
+      <span class="tech-item">Safety RTOS</span>
+      <span class="tech-item">Multi-core SMP/AMP</span>
+      <span class="tech-item">JTAG / SWD</span>
+      <span class="tech-item">Logic Analyzers</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY CLIENTS SWITCH ===== -->
+<section class="section section--alt section--compact">
+  <div class="container">
+    <div class="section__header">
+      <h2>Why Clients Switch From Big Consultancies</h2>
+      <p>We hear the same stories. Here are the ones that lead to us.</p>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <h3 class="card__title">The pitch was senior. The team wasn't.</h3>
+        <p class="card__text">The people who won the engagement were excellent. The people delivering it were junior — and billed as if they weren't. We don't have a junior tier. There's no one to swap in after you sign.</p>
+      </div>
+      <div class="card">
+        <h3 class="card__title">Adding people stopped making it faster.</h3>
+        <p class="card__text">At some point the team got bigger and the product got slower. That's coordination overhead, and it's measurable. Small senior teams skip almost all of it — decisions happen in an afternoon, not a sprint.</p>
+      </div>
+      <div class="card">
+        <h3 class="card__title">Nobody actually owned the outcome.</h3>
+        <p class="card__text">When fifteen people share a project, accountability dissolves. Everyone is responsible, so no one is. With us, one accountable senior engineer owns the problem and fixes it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT / CTA ===== -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="cta-section">
+      <h2>Talk to an engineer about your project</h2>
+      <p>A direct conversation with a senior embedded engineer about your technical challenges — no pitch, no fluff, no account managers.</p>
+      <a href="mailto:contact@djlabs.pl" class="btn btn--primary btn--large">
+        contact@djlabs.pl
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div>
+        <div class="site-footer__brand">
+          <span class="site-footer__brand-accent">DJ</span>Labs
+        </div>
+        <p>Founder-led embedded systems consultancy. Deep embedded software expertise for medical, industrial, automotive, and IoT systems. RTOS, bare-metal firmware, device drivers, and embedded architecture.</p>
+      </div>
+      <div>
+        <h4 class="site-footer__heading">Services</h4>
+        <ul>
+          <li><a href="#services">Embedded Software</a></li>
+          <li><a href="#services">RTOS Development</a></li>
+          <li><a href="#services">BSP &amp; Board Bring-Up</a></li>
+          <li><a href="#services">Device Drivers</a></li>
+          <li><a href="#services">Embedded Security</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="site-footer__heading">Contact</h4>
+        <ul>
+          <li><a href="mailto:contact@djlabs.pl">contact@djlabs.pl</a></li>
+          <li><span style="color:#9ca3af">DJLabs Daniel Jasiński</span></li>
+          <li><span style="color:#9ca3af">Tax ID: 9552578753</span></li>
+          <li><span style="color:#9ca3af">Reg. No: 527923998</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <span>&copy; 2026 DJLabs.</span>
+      <span>Embedded Systems Engineering</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  (function() {
+    var nav = document.querySelector('.mobile-nav');
+    var toggle = document.querySelector('.nav-toggle');
+
+    if (toggle && nav) {
+      toggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        nav.classList.toggle('is-open');
+        document.body.classList.toggle('nav-open', nav.classList.contains('is-open'));
+      });
+    }
+
+    if (nav) {
+      nav.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          nav.classList.remove('is-open');
+          document.body.classList.remove('nav-open');
+        });
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>
