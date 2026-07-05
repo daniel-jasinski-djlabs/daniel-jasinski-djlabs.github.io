@@ -1,0 +1,37 @@
+{% comment %}
+  Usage: {% include hero.html
+    label="Embedded Systems Engineering"
+    title="Headline"
+    subtitle="Supporting text"
+    visual_html="<div>...</div>"
+    cta_text="Talk to an engineer"
+    cta_url="/contact/"
+    secondary_cta_text="Discuss Your Project"
+    secondary_cta_url="/contact/"
+  %}
+{% endcomment %}
+
+<section class="hero container">
+  <div class="hero__content">
+    <span class="hero__label">{{ include.label | default: "Embedded Systems Engineering" }}</span>
+    <h1>{{ include.title }}</h1>
+    <p>{{ include.subtitle }}</p>
+    <div class="btn-group">
+      <a href="{{ include.cta_url | relative_url }}" class="btn btn--primary btn--large">
+        {{ include.cta_text }}
+      </a>
+      {% if include.secondary_cta_text %}
+        <a href="{{ include.secondary_cta_url | relative_url }}" class="btn btn--secondary btn--large">
+          {{ include.secondary_cta_text }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+  <div class="hero__visual">
+    {% if include.visual_html %}
+      {{ include.visual_html }}
+    {% elsif include.code_snippet %}
+      <pre><code class="language-c">{{ include.code_snippet }}</code></pre>
+    {% endif %}
+  </div>
+</section>

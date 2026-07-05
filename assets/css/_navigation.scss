@@ -1,0 +1,213 @@
+// == Navigation: Precision Architecture ====================================
+
+.site-header {
+  height: var(--header-height);
+  border-bottom: 1px solid var(--color-border-strong);
+  background: var(--color-bg);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.site-header__logo {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-text);
+  text-decoration: none;
+
+  &:hover { text-decoration: none; }
+}
+
+.site-header__logo-accent {
+  color: var(--color-primary);
+}
+
+// Desktop nav — mono links
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xl);
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.nav__link {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color var(--transition);
+
+  &:hover {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+}
+
+.nav__cta {
+  margin-left: var(--spacing-md);
+}
+
+// Language switcher
+.nav__lang {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: var(--spacing-md);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.nav__lang-item {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  padding: 2px 4px;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.nav__lang-item--active {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.nav__lang-sep {
+  color: var(--color-border-strong);
+}
+
+// Mobile nav toggle
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-sm);
+  color: var(--color-text);
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
+
+// Mobile nav drawer
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--color-bg);
+  padding: var(--spacing-xl);
+  z-index: 99;
+  overflow-y: auto;
+
+  &.is-open {
+    display: block;
+  }
+
+  a {
+    display: block;
+    padding: var(--spacing-md) 0;
+    font-family: var(--font-mono);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--color-text);
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid var(--color-border);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+}
+
+// Footer
+.site-footer {
+  background: var(--color-dark);
+  color: var(--color-text-muted);
+  padding: var(--spacing-3xl) 0 var(--spacing-xl);
+  font-size: var(--font-size-sm);
+  border-top: 2px solid var(--color-secondary);
+
+  a { color: #9ca3af; }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin-bottom: 0.25rem;
+    }
+  }
+}
+
+.site-footer__grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: var(--spacing-2xl);
+  margin-bottom: var(--spacing-2xl);
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+}
+
+.site-footer__brand {
+  color: #fff;
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  margin-bottom: var(--spacing-sm);
+}
+
+.site-footer__brand-accent {
+  color: var(--color-secondary);
+}
+
+.site-footer__heading {
+  color: #fff;
+  margin-bottom: var(--spacing-sm);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.site-footer__bottom {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: var(--spacing-lg);
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+}

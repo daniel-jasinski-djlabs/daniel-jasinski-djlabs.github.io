@@ -1,0 +1,23 @@
+{% comment %}
+  Usage: {% include callout.html type="info" title="Note" content="This is important." %}
+  Types: info, warning, tip
+{% endcomment %}
+
+{% assign bg = '#dbeafe' %}
+{% assign border = '#1e40af' %}
+{% assign icon = 'ℹ' %}
+
+{% if include.type == 'warning' %}
+  {% assign bg = '#fef3c7' %}
+  {% assign border = '#d97706' %}
+  {% assign icon = '⚠' %}
+{% elsif include.type == 'tip' %}
+  {% assign bg = '#d1fae5' %}
+  {% assign border = '#059669' %}
+  {% assign icon = '💡' %}
+{% endif %}
+
+<div style="background: {{ bg }}; border-left: 3px solid {{ border }}; padding: var(--spacing-md) var(--spacing-lg); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: var(--spacing-lg) 0;">
+  <strong>{{ icon }} {{ include.title }}</strong>
+  <p style="margin: var(--spacing-xs) 0 0;">{{ include.content }}</p>
+</div>

@@ -1,0 +1,19 @@
+---
+layout: page
+title: Tags
+permalink: /blog/tags/
+---
+
+<h2>All Tags</h2>
+
+<ul>
+  {% for tag in site.tags %}
+    {% assign tag_name = tag | first %}
+    <li>
+      <a href="{{ '/blog/tags/' | append: tag_name | slugify | relative_url }}">
+        {{ tag_name }}
+      </a>
+      ({{ tag | last | size }})
+    </li>
+  {% endfor %}
+</ul>

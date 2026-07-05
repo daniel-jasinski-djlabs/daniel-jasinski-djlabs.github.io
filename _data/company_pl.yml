@@ -1,0 +1,16 @@
+name: DJLabs
+tagline: Inżynieria Systemów Wbudowanych
+description: >-
+  Założona przez eksperta firma konsultingowa w dziedzinie systemów
+  wbudowanych. Specjalistyczna wiedza w zakresie oprogramowania wbudowanego
+  dla systemów medycznych, przemysłowych, motoryzacyjnych i IoT. RTOS,
+  bare-metal firmware, sterowniki urządzeń i architektura wbudowana.
+email: contact@djlabs.pl
+regions:
+  - Europe
+  - UK
+  - North America
+social:
+  github: djlabs
+  linkedin: djlabs-engineering
+  twitter: DJLabs_

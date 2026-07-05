@@ -1,0 +1,26 @@
+models:
+  - title: Projektowy
+    description: >-
+      Projekty o stałym zakresie z jasno określonymi rezultatami i kamieniami
+      milowymi, prowadzone przez senior inżyniera, który odpowiada za efekt —
+      z zaufanymi specjalistami z sieci kontaktów angażowanymi w razie potrzeby.
+      Najlepsze dla dobrze zdefiniowanych potrzeb rozwoju embedded ze znanym
+      punktem końcowym.
+    icon: target
+
+  - title: Partner Inżynieryjny
+    description: >-
+      Senior inżynier embedded zintegrowany z Twoim zespołem na bieżąco —
+      ta sama osoba, każdy sprint. Zaufani specjaliści z naszej sieci są
+      angażowani, gdy Twój projekt wymaga dodatkowej wiedzy lub mocy
+      przerobowych. Najlepsze dla długoterminowego rozwoju produktu
+      z ewoluującymi wymaganiami.
+    icon: users
+
+  - title: Doradztwo
+    description: >-
+      Przeglądy architektury, wybór technologii oraz analiza due diligence
+      od senior inżyniera, który już podejmował te decyzje i doświadczył
+      ich konsekwencji. Najlepsze dla kluczowych decyzji, gdzie głęboka
+      wiedza embedded zmniejsza ryzyko.
+    icon: compass

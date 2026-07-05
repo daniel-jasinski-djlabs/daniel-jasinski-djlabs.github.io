@@ -1,0 +1,63 @@
+---
+layout: default
+---
+
+<article class="section">
+  <div class="container container--article">
+    <header class="mb-xl">
+      <div class="post-card__meta">
+        <time datetime="{{ page.date | date_to_xmlschema }}">
+          {{ page.date | date: "%B %-d, %Y" }}
+        </time>
+        {% if page.categories %}
+          <span>{% if site.active_lang == 'pl' %}w{% else %}in{% endif %}
+            {% for category in page.categories %}
+              <a href="{{ '/blog/categories/' | append: category | slugify | relative_url }}" class="tag">{{ category }}</a>
+            {% endfor %}
+          </span>
+        {% endif %}
+      </div>
+      <h1>{{ page.title }}</h1>
+      {% if page.author %}
+        {% assign author = site.authors | where: 'slug', page.author | first %}
+        {% if author %}
+          <p class="text-secondary">{% if site.active_lang == 'pl' %}Autor:{% else %}By{% endif %} {{ author.name }}</p>
+        {% endif %}
+      {% endif %}
+    </header>
+
+    <div class="content">
+      {{ content }}
+    </div>
+
+    {% if page.tags %}
+      <div class="mt-2xl">
+        {% for tag in page.tags %}
+          <a href="{{ '/blog/tags/' | append: tag | slugify | relative_url }}" class="tag">{{ tag }}</a>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</article>
+
+<section class="section section--alt">
+  <div class="container container--article">
+    {% include related-posts.html %}
+  </div>
+</section>
+
+{% if site.active_lang == 'pl' %}
+  {% include cta.html
+    title="Potrzebujesz ekspertyzy w systemach wbudowanych?"
+    text="Omów swój projekt z doświadczonym inżynierem."
+    button_text="Porozmawiaj z inżynierem"
+    button_url="/contact/"
+  %}
+{% else %}
+  {% include cta.html
+    title="Need embedded engineering expertise?"
+    text="Discuss your project with a senior embedded engineer."
+    button_text="Talk to an Engineer"
+    button_url="/contact/"
+  %}
+{% endif %}

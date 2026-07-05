@@ -1,0 +1,45 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div>
+        <div class="site-footer__brand">
+          <span class="site-footer__brand-accent">DJ</span>Labs
+        </div>
+        {% assign company = site.data.company %}
+        {% if site.active_lang == 'pl' and site.data.company_pl %}
+          {% assign company = site.data.company_pl %}
+        {% endif %}
+        <p>{{ company.description }}</p>
+      </div>
+      <div>
+        <h4 class="site-footer__heading">
+          {% if site.active_lang == 'pl' %}Usługi{% else %}Services{% endif %}
+        </h4>
+        <ul>
+          {% assign nav = site.data.navigation %}
+          {% if site.active_lang == 'pl' and site.data.navigation_pl %}
+            {% assign nav = site.data.navigation_pl %}
+          {% endif %}
+          {% for item in nav.footer.services %}
+            <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div>
+        <h4 class="site-footer__heading">
+          {% if site.active_lang == 'pl' %}Kontakt{% else %}Contact{% endif %}
+        </h4>
+        <ul>
+          <li><a href="mailto:contact@djlabs.pl">contact@djlabs.pl</a></li>
+          <li><span style="color:#9ca3af">DJLabs Daniel Jasiński</span></li>
+          <li><span style="color:#9ca3af">Tax ID: 9552578753</span></li>
+          <li><span style="color:#9ca3af">Reg. No: 527923998</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <span>&copy; {{ 'now' | date: '%Y' }} DJLabs.</span>
+      <span>{% if site.active_lang == 'pl' %}Inżynieria Systemów Wbudowanych{% else %}Embedded Systems Engineering{% endif %}</span>
+    </div>
+  </div>
+</footer>

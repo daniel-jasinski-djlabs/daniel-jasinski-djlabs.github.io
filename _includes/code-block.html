@@ -1,0 +1,15 @@
+{% comment %}
+  Enhanced code block with optional filename and language label.
+  Usage: {% include code-block.html language="c" filename="main.c" %}
+{% endcomment %}
+
+{% if include.filename %}
+<div class="code-block-header" style="display: flex; justify-content: space-between; align-items: center; background: #1a2332; padding: 0.5rem 1rem; border-radius: var(--radius-md) var(--radius-md) 0 0; font-size: var(--font-size-xs); color: var(--color-text-muted); font-family: var(--font-mono);">
+  <span>{{ include.filename }}</span>
+  <span>{{ include.language }}</span>
+</div>
+{% endif %}
+
+```{{ include.language }}
+{{ include.code | default: "" }}
+```

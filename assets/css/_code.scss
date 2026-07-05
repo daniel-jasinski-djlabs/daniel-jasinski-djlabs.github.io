@@ -1,0 +1,42 @@
+// == Code Highlighting (Rouge) ============================================
+
+// Base16-like dark theme for code blocks
+pre {
+  .highlight {
+    background: var(--color-code-bg);
+    color: var(--color-code-text);
+  }
+
+  // Keywords
+  .k, .kd, .kn, .kp, .kr, .kt { color: #c678dd; }
+  // Strings
+  .s, .s1, .s2, .se, .sh, .si, .sx { color: #98c379; }
+  // Comments
+  .c, .c1, .cm, .cs { color: #5c6370; font-style: italic; }
+  // Numbers
+  .m, .mi, .mf, .mh, .mo { color: #d19a66; }
+  // Functions
+  .nf { color: #61afef; }
+  // Types / classes
+  .nc, .nn { color: #e5c07b; }
+  // Operators
+  .o, .ow { color: #abb2bf; }
+  // Variables
+  .n, .nb, .nx, .py { color: #e06c75; }
+  // Preprocessor
+  .cp, .cpf { color: #56b6c2; }
+  // Builtins
+  .nb { color: #61afef; }
+
+  // Line numbers
+  .lineno {
+    color: #5c6370;
+    padding-right: var(--spacing-md);
+    user-select: none;
+  }
+}
+
+// Inline code (not in a pre block)
+:not(pre) > code {
+  // Uses base styles from _base.scss
+}

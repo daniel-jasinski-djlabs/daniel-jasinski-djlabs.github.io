@@ -1,0 +1,13 @@
+industries:
+  - title: Urządzenia medyczne
+    subtitle: Oprogramowanie wbudowane dla urządzeń medycznych, diagnostyki i zdrowia cyfrowego
+  - title: Automatyka przemysłowa
+    subtitle: Wbudowane systemy sterowania dla automatyki fabrycznej, kontroli procesów i przemysłowego IoT
+  - title: Motoryzacja
+    subtitle: Oprogramowanie wbudowane dla ECU samochodowych, ADAS i systemów pojazdów połączonych
+  - title: Internet Rzeczy
+    subtitle: Połączone systemy wbudowane dla produktów IoT, przetwarzania brzegowego i bezprzewodowych sieci czujników
+  - title: Robotyka
+    subtitle: Wbudowane oprogramowanie sterujące dla robotów, systemów autonomicznych i kontroli ruchu
+  - title: Elektronika użytkowa
+    subtitle: Oprogramowanie wbudowane dla urządzeń inteligentnego domu, wearables i produktów połączonych

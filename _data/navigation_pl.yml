@@ -1,0 +1,30 @@
+main:
+  - title: Strona główna
+    url: /
+  - title: Blog
+    url: /blog/
+  - title: O nas
+    url: /about/
+  - title: Kontakt
+    url: /contact/
+
+footer:
+  services:
+    - title: Oprogramowanie wbudowane
+      url: /#services
+    - title: Rozwój RTOS
+      url: /#services
+    - title: BSP i uruchamianie płyt
+      url: /#services
+    - title: Sterowniki urządzeń
+      url: /#services
+    - title: Bezpieczeństwo wbudowane
+      url: /#services
+
+  company:
+    - title: O nas
+      url: /about/
+    - title: Blog
+      url: /blog/
+    - title: Kontakt
+      url: /contact/

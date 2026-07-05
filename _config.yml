@@ -1,0 +1,89 @@
+title: DJLabs — Embedded Systems Engineering
+tagline: Deep embedded software expertise for medical, industrial, automotive, and IoT
+description: >-
+  DJLabs is a founder-led embedded systems consultancy. Deep expertise in
+  RTOS, bare-metal firmware, device drivers, BSP, and embedded
+  architecture for companies building reliable products in medical,
+  industrial, automotive, and IoT.
+url: https://djlabs.dev
+logo: /assets/images/djlabs-logo.svg
+lang: en
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: /blog/:year/:month/:day/:slug/
+
+sass:
+  style: compressed
+  sourcemap: never
+
+# Collections
+collections:
+  services:
+    output: true
+    permalink: /services/:slug/
+  industries:
+    output: true
+    permalink: /industries/:slug/
+  authors:
+    output: true
+    permalink: /authors/:slug/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: page
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      permalink: /blog/:year/:month/:day/:slug/
+  - scope:
+      path: ""
+      type: services
+    values:
+      layout: service
+  - scope:
+      path: ""
+      type: industries
+    values:
+      layout: industry
+  - scope:
+      path: ""
+      type: authors
+    values:
+      layout: author
+
+# Plugins
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-polyglot
+
+# Polyglot — multilingual
+languages: ["en", "pl"]
+default_lang: "en"
+parallel_localization: true
+exclude_from_localization: ["assets", "images", "javascript", "css", "public", "sitemap", "feed.xml", "robots.txt"]
+
+# Blog feed
+feed:
+  path: /blog/feed.xml
+  posts_limit: 20
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .gitignore
+  - README.md
+  - docs
+  - .superpowers

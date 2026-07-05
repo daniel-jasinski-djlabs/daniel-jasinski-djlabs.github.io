@@ -1,0 +1,24 @@
+models:
+  - title: Project-Based
+    description: >-
+      Fixed-scope projects with clear deliverables and milestones, led by a
+      senior engineer who owns the outcome — with trusted network specialists
+      brought in when needed. Best for well-defined embedded development needs
+      with a known endpoint.
+    icon: target
+
+  - title: Embedded Engineering Partner
+    description: >-
+      A senior embedded engineer integrated with your team on an ongoing basis —
+      the same person, every sprint. Trusted specialists from our network are
+      brought in when your project needs additional expertise or capacity. Best
+      for long-running product development with evolving requirements.
+    icon: users
+
+  - title: Advisory
+    description: >-
+      Architecture reviews, technology selection, and technical due diligence
+      from a senior engineer who has made these decisions before and lived with
+      the consequences. Best for critical decisions where deep embedded
+      expertise reduces risk.
+    icon: compass

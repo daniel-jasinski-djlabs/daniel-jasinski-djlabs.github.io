@@ -1,0 +1,23 @@
+<div class="terminal" aria-label="Zephyr RTOS fatal error output">
+  <div class="terminal__titlebar">
+    <div class="terminal__dots">
+      <span class="terminal__dot terminal__dot--close"></span>
+      <span class="terminal__dot terminal__dot--min"></span>
+      <span class="terminal__dot terminal__dot--max"></span>
+    </div>
+    <span class="terminal__title">/dev/ttyACM0/</span>
+  </div>
+  <div class="terminal__body">
+    <div class="terminal__line">ASSERTION FAIL [foo == 0xF0CACC1A] @ ZEPHYR_BASE/app/src/main.c:367</div>
+    <div class="terminal__line">        Something went really wrong!</div>
+    <div class="terminal__line">r0/a1:  0x00000004  r1/a2:  0x0000016f  r2/a3:  0x00000000</div>
+    <div class="terminal__line">r3/a4:  0x00000000 r12/ip:  0x00000000 r14/lr:  0x00000a6d</div>
+    <div class="terminal__line"> xpsr:  0x61000000</div>
+    <div class="terminal__line">Faulting instruction address (r15/pc): 0x00009fe4</div>
+    <div class="terminal__line">&gt;&gt;&gt; ZEPHYR FATAL ERROR 4: Kernel panic</div>
+    <div class="terminal__line">Current thread: 0x20000414 (main)</div>
+    <div class="terminal__line">Halting system</div>
+    <div class="terminal__line terminal__line--gap"></div>
+    <div class="terminal__line terminal__line--djlabs"><strong>DJLABS:</strong> Firmware issues? We can help!<span class="terminal__cursor"></span></div>
+  </div>
+</div>

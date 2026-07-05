@@ -1,0 +1,20 @@
+{% comment %}
+  Usage: {% include cta.html
+    title="Ready to discuss your embedded project?"
+    text="Book a free discovery call to talk through your technical challenges."
+    button_text="Talk to an Engineer"
+    button_url="/contact/"
+  %}
+{% endcomment %}
+
+<section class="section">
+  <div class="container">
+    <div class="cta-section">
+      <h2>{{ include.title }}</h2>
+      <p>{{ include.text }}</p>
+      <a href="{{ include.button_url | relative_url }}" class="btn btn--primary btn--large">
+        {{ include.button_text }}
+      </a>
+    </div>
+  </div>
+</section>

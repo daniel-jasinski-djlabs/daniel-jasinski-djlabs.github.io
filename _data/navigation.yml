@@ -1,0 +1,30 @@
+main:
+  - title: Home
+    url: /
+  - title: Blog
+    url: /blog/
+  - title: About
+    url: /about/
+  - title: Contact
+    url: /contact/
+
+footer:
+  services:
+    - title: Embedded Software
+      url: /#services
+    - title: RTOS Development
+      url: /#services
+    - title: BSP & Board Bring-Up
+      url: /#services
+    - title: Device Drivers
+      url: /#services
+    - title: Embedded Security
+      url: /#services
+
+  company:
+    - title: About
+      url: /about/
+    - title: Blog
+      url: /blog/
+    - title: Contact
+      url: /contact/

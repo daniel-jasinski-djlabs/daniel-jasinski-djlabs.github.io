@@ -1,0 +1,47 @@
+{% comment %}
+  Finds up to 3 related posts sharing categories with the current post.
+{% endcomment %}
+
+{% assign max_related = 3 %}
+{% assign related_posts = '' | split: '' %}
+
+{% if page.categories %}
+  {% for category in page.categories %}
+    {% for post in site.categories[category] %}
+      {% unless post.url == page.url %}
+        {% if post.lang == site.active_lang or post.lang == nil %}
+          {% assign related_posts = related_posts | push: post %}
+        {% endif %}
+      {% endunless %}
+      {% if related_posts.size >= max_related %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+    {% if related_posts.size >= max_related %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% if related_posts.size > 0 %}
+  <h3>{% if site.active_lang == 'pl' %}Powiązane artykuły{% else %}Related Posts{% endif %}</h3>
+  <div class="card-grid" style="margin-top: var(--spacing-lg);">
+    {% for post in related_posts limit: max_related %}
+      <div class="card">
+        <p class="post-card__meta">
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+        </p>
+        <h4 style="font-size: var(--font-size-lg); margin-bottom: var(--spacing-xs);">
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </h4>
+        {% if post.categories %}
+          <div style="margin-top: var(--spacing-sm);">
+            {% for cat in post.categories limit: 2 %}
+              <span class="tag">{{ cat }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}

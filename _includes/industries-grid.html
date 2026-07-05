@@ -1,0 +1,12 @@
+<div class="card-grid">
+  {% assign industries_data = site.data.industries %}
+  {% if site.active_lang == 'pl' and site.data.industries_pl %}
+    {% assign industries_data = site.data.industries_pl %}
+  {% endif %}
+  {% for industry in industries_data.industries %}
+    <div class="card">
+      <h3 class="card__title">{{ industry.title }}</h3>
+      <p class="card__text">{{ industry.subtitle }}</p>
+    </div>
+  {% endfor %}
+</div>

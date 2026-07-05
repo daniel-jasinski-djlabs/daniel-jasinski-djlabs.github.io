@@ -1,0 +1,51 @@
+---
+layout: default
+---
+
+<article>
+  <div class="page-header">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="{{ '/' | relative_url }}">{% if site.active_lang == 'pl' %}Strona główna{% else %}Home{% endif %}</a>
+        <span>/</span>
+        <a href="{{ '/industries/' | relative_url }}">{% if site.active_lang == 'pl' %}Branże{% else %}Industries{% endif %}</a>
+        <span>/</span>
+        <span>{{ page.title }}</span>
+      </nav>
+      <h1>{{ page.title }}</h1>
+      {% if page.subtitle %}
+        <p>{{ page.subtitle }}</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="section section--compact">
+    <div class="container layout-sidebar">
+      <aside class="sidebar">
+        <h4>{% if site.active_lang == 'pl' %}Branże{% else %}Industries{% endif %}</h4>
+        <ul class="sidebar__links">
+          {% assign lang_filter = site.active_lang %}
+          {% for industry in site.industries %}
+            {% if industry.lang == lang_filter or industry.lang == nil %}
+              <li>
+                <a href="{{ industry.url | relative_url }}"
+                   {% if industry.url == page.url %}style="color: var(--color-primary); font-weight: 600;"{% endif %}>
+                  {{ industry.title }}
+                </a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </aside>
+
+      <div class="content">
+        {{ content }}
+      </div>
+    </div>
+  </div>
+</article>
+
+{% capture cta_title %}{% if site.active_lang == 'pl' %}Porozmawiajmy o Twoim projekcie {{ page.title | downcase }}{% else %}Let's discuss your {{ page.title | downcase }} project{% endif %}{% endcapture %}
+{% capture cta_text %}{% if site.active_lang == 'pl' %}Skontaktuj się z doświadczonym inżynierem systemów wbudowanych.{% else %}Get in touch with a senior embedded engineer.{% endif %}{% endcapture %}
+{% capture cta_button %}{% if site.active_lang == 'pl' %}Porozmawiaj z inżynierem{% else %}Talk to an Engineer{% endif %}{% endcapture %}
+{% include cta.html title=cta_title text=cta_text button_text=cta_button button_url="/contact/" %}

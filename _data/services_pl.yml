@@ -1,0 +1,45 @@
+services:
+  - slug: embedded-software-development
+    title: Tworzenie oprogramowania wbudowanego
+    short: Oprogramowanie wbudowane full-stack od architektury po produkcję.
+    icon: cpu
+
+  - slug: test-development
+    title: Testowanie
+    short: Testy jednostkowe, integracyjne i systemowe dla urządzeń wbudowanych.
+    icon: clock
+
+  - slug: bsp-board-bring-up
+    title: BSP i uruchamianie płyt
+    short: BSP i szybkie uruchamianie sprzętu dla niestandardowych płytek.
+    icon: microchip
+
+  - slug: device-driver-development
+    title: Tworzenie sterowników urządzeń
+    short: Sterowniki RTOS i bare-metal dla niestandardowych peryferiów i czujników.
+    icon: settings
+
+  - slug: embedded-architecture-consulting
+    title: Konsulting architektury wbudowanej
+    short: Architektura systemu, wybór technologii i przegląd projektu.
+    icon: grid
+
+  - slug: embedded-security
+    title: Bezpieczeństwo systemów wbudowanych
+    short: Bezpieczny rozruch, podpisywanie oprogramowania i integracja modułów bezpieczeństwa sprzętowego.
+    icon: shield
+
+  - slug: functional-safety-support
+    title: Wsparcie bezpieczeństwa funkcjonalnego
+    short: Inżynieria zgodności z IEC 61508, ISO 26262 i IEC 62304.
+    icon: check-circle
+
+  - slug: medical-device-software
+    title: Oprogramowanie urządzeń medycznych
+    short: Oprogramowanie wbudowane zgodne z FDA dla urządzeń medycznych i diagnostyki.
+    icon: heart
+
+  - slug: performance-optimization
+    title: Optymalizacja wydajności
+    short: Skracanie czasu uruchamiania, optymalizacja zużycia energii i dostrajanie wydajności czasu rzeczywistego.
+    icon: zap

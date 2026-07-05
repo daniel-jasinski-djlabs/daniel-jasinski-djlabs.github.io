@@ -1,0 +1,13 @@
+industries:
+  - title: Medical Devices
+    subtitle: Embedded software for medical devices, diagnostics, and digital health
+  - title: Industrial Automation
+    subtitle: Embedded control systems for factory automation, process control, and industrial IoT
+  - title: Automotive
+    subtitle: Embedded software for automotive ECUs, ADAS, and connected vehicle systems
+  - title: Internet of Things
+    subtitle: Connected embedded systems for IoT products, edge computing, and wireless sensor networks
+  - title: Robotics
+    subtitle: Embedded control software for robots, autonomous systems, and motion control
+  - title: Consumer Electronics
+    subtitle: Embedded software for smart home devices, wearables, and connected products

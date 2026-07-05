@@ -1,0 +1,19 @@
+---
+layout: page
+title: Categories
+permalink: /blog/categories/
+---
+
+<h2>All Categories</h2>
+
+<ul>
+  {% for category in site.categories %}
+    {% assign cat_name = category | first %}
+    <li>
+      <a href="{{ '/blog/categories/' | append: cat_name | slugify | relative_url }}">
+        {{ cat_name }}
+      </a>
+      ({{ category | last | size }})
+    </li>
+  {% endfor %}
+</ul>

@@ -1,0 +1,45 @@
+services:
+  - slug: embedded-software-development
+    title: Embedded Software Development
+    short: Full-stack embedded software from architecture to production.
+    icon: cpu
+
+  - slug: test-development
+    title: SQA/Testing
+    short: Unit, integration and system level testing for embedded devices.
+    icon: clock
+
+  - slug: bsp-board-bring-up
+    title: BSP & Board Bring-Up
+    short: Board support packages and fast hardware bring-up for custom boards.
+    icon: microchip
+
+  - slug: device-driver-development
+    title: Device Driver Development
+    short: RTOS and bare-metal drivers for custom peripherals and sensors.
+    icon: settings
+
+  - slug: embedded-architecture-consulting
+    title: Embedded Architecture Consulting
+    short: System architecture, technology selection, and design review.
+    icon: grid
+
+  - slug: embedded-security
+    title: Embedded Security
+    short: Secure boot, firmware signing, and hardware security module integration.
+    icon: shield
+
+  - slug: functional-safety-support
+    title: Functional Safety Support
+    short: IEC 61508, ISO 26262, and IEC 62304 compliance engineering.
+    icon: check-circle
+
+  - slug: medical-device-software
+    title: Medical Device Software
+    short: FDA-compliant embedded software for medical devices and diagnostics.
+    icon: heart
+
+  - slug: performance-optimization
+    title: Performance Optimization
+    short: Boot time reduction, power optimization, and real-time performance tuning.
+    icon: zap

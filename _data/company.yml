@@ -1,0 +1,15 @@
+name: DJLabs
+tagline: Embedded Systems Engineering
+description: >-
+  Founder-led embedded systems consultancy. Deep embedded software expertise
+  for medical, industrial, automotive, and IoT systems. RTOS,
+  bare-metal firmware, device drivers, and embedded architecture.
+email: contact@djlabs.pl
+regions:
+  - Europe
+  - UK
+  - North America
+social:
+  github: djlabs
+  linkedin: djlabs-engineering
+  twitter: DJLabs_
